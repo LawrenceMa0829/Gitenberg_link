@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <style>:root {
+  --paper: #f8f4e8;
+  --ink: #171819;
+  --muted: #6f685d;
+  --line: #d7cdb9;
+  --accent: #1d5b49;
+  --accent-soft: #d7ebe1;
+  --callout: #fff2ca;
+  --code: #162026;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(29, 91, 73, 0.16), transparent 35%),
+    linear-gradient(180deg, #f6f1e3 0%, #fcfbf7 100%);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+}
+
+.page-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 14px 64px;
+}
+
+.page-cover {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.page-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.hero.with-cover {
+  margin: -42px 20px 0;
+  width: calc(100% - 40px);
+  padding-top: 34px;
+}
+
+.hero-accent {
+  position: absolute;
+  inset: auto -80px -80px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(29, 91, 73, 0.22), rgba(29, 91, 73, 0));
+}
+
+.hero-icon-shell {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero.with-cover .hero-icon-shell {
+  transform: translateY(-38px);
+  margin-bottom: -24px;
+}
+
+.hero-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-icon-emoji {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.hero-icon-empty {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 0.95;
+}
+
+.meta {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 28px;
+}
+
+.tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-body {
+  display: grid;
+  gap: 18px;
+}
+
+p,
+li,
+blockquote,
+summary,
+td,
+.embed-placeholder,
+.todo span {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  margin: 14px 0 2px;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 4px solid var(--accent);
+  color: #2f413b;
+}
+
+.callout {
+  padding: 16px 18px;
+  border-left: 4px solid #d09b25;
+  border-radius: 18px;
+  background: var(--callout);
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.embed-placeholder {
+  border: 1px dashed #a99571;
+  border-radius: 18px;
+  background: #f4ecdb;
+  padding: 18px;
+}
+
+.columns {
+  display: grid;
+  gap: 16px;
+}
+
+.column {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.columns-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.columns-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.table-summary-row td {
+  background: rgba(215, 205, 185, 0.22);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f4a43;
+}
+
+td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+figure {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+figcaption {
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+pre {
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--code);
+  color: #f5f1e5;
+  overflow: auto;
+}
+
+a {
+  color: var(--accent);
+}
+
+@media (max-width: 740px) {
+  .page-shell {
+    padding: 20px 10px 52px;
+  }
+
+  .page-cover {
+    height: 170px;
+    border-radius: 24px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero.with-cover {
+    margin: -26px 10px 0;
+    width: calc(100% - 20px);
+  }
+
+  .hero.with-cover .hero-icon-shell {
+    transform: translateY(-24px);
+    margin-bottom: -12px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+pre.code-block code .tok-keyword { color: #6bdfff; font-weight: 600; }
+pre.code-block code .tok-string { color: #f4c27a; }
+pre.code-block code .tok-number { color: #ffd166; }
+pre.code-block code .tok-comment { color: #9fdd9f; font-style: italic; }
+</style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="page-cover"><img src="../../attachments/page_images/page_cover-20260722T225128.jpg" alt="Page cover" /></section>
+      <header class="hero with-cover">
+        <div class="hero-accent"></div>
+        <div class="hero-icon-shell"><img class="hero-icon-image" src="../../attachments/page_images/page_icon-20260722T225117.jpg" alt="Page icon" /></div>
+        <div>
+          <h1>Hello World</h1>
+          <p class="meta">Updated 2026-08-05T20:15:45.984520</p>
+        </div>
+      </header>
+      <section class="tag-row"><span class="tag">1st</span><span class="tag">2nd</span></section>
+      <article class="page-body">
+        <div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-python"><span class="tok-keyword">import</span> os
+print(<span class="tok-string">"Hello World"</span>)
+</code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-bash">:: PC連Pixel
+adb tcpip <span class="tok-number">5555</span>
+adb connect <span class="tok-number">192.168</span>.<span class="tok-number">8.61</span>:<span class="tok-number">5555</span>
+scrcpy</code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><h3>h3</h3></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><details open data-fold-storage-key="fold:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100479_6"><summary>test</summary><label class="todo"><input type="checkbox" checked data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100458_3" /><span>one</span></label>
+<label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100469_4" /><span>two</span></label>
+<label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100474_5" /><span>three</span></label></details></div>
+<div class="block-row" style="margin-bottom:12px;"><table><tr><td>test</td><td>what if I have typed too long header</td><td></td><td></td></tr>
+<tr><td>1</td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td>6</td><td></td><td></td></tr>
+<tr><td>3</td><td>3</td><td></td><td></td></tr>
+<tr><td></td><td>ffv</td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>8</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>9</td><td></td><td></td></tr>
+<tr><td>Sum: 14</td><td>Avg: 6</td><td></td><td></td></tr>
+<tr class="table-summary-row"><td>Sum: 14</td><td></td><td></td><td></td></tr></table></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/files/Table_20260723T224804.xlsx" target="_self">Table (.xlsx) (.xlsx)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/pdf/Table_20260723T224735.pdf" target="_self">Table (.pdf) (.pdf)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-python">
+<span class="tok-comment"># Querying-dqe_rule_dqe_config-Oracledb-SendEmail</span>
+
+<span class="tok-comment">#streamlit==1.41.1</span>
+<span class="tok-comment">#oracledb==2.5.1</span>
+<span class="tok-comment">#pandas==1.4.1</span>
+<span class="tok-comment">#numpy==1.24.4</span>
+<span class="tok-comment">#msal==1.32.0</span>
+<span class="tok-comment">#pyyaml==6.0.2</span>
+<span class="tok-comment">#requests==2.32.3</span>
+
+<span class="tok-comment"># Send email def &amp; Send email at the end are 2 part for contructing the email and sending it</span>
+
+<span class="tok-keyword">import</span> streamlit <span class="tok-keyword">as</span> st
+<span class="tok-keyword">import</span> pandas <span class="tok-keyword">as</span> pd
+<span class="tok-keyword">import</span> oracledb
+<span class="tok-keyword">import</span> yaml
+<span class="tok-keyword">import</span> msal
+<span class="tok-keyword">import</span> requests
+from pathlib <span class="tok-keyword">import</span> Path
+<span class="tok-keyword">import</span> datetime
+
+@st.cache_data
+def fetch_data(query):
+   <span class="tok-string">""</span>"
+   Connects to the Oracle database using oracledb <span class="tok-keyword">in</span> thin mode,
+   executes the provided SQL query, and returns the result <span class="tok-keyword">as</span> a pandas DataFrame.
+   <span class="tok-string">""</span>"
+   <span class="tok-keyword">try</span>:
+       <span class="tok-comment"># Establish connection using oracledb in thin mode</span>
+       connection = oracledb.connect(
+           user=<span class="tok-string">'ISCGENPROD'</span>,
+           password=<span class="tok-string">'ISCGENPROD'</span>,
+           dsn=<span class="tok-string">"hktkoor1521/APPPD"</span>
+       )
+       df = pd.read_sql(query, con=connection)
+       connection.close()
+       <span class="tok-keyword">return</span> df
+   except oracledb.Error <span class="tok-keyword">as</span> e:
+       st.error(f<span class="tok-string">"Error fetching data: {e}"</span>)
+       <span class="tok-keyword">return</span> pd.DataFrame()  <span class="tok-comment"># Return empty DataFrame on error</span>
+
+@st.cache_data
+def get_unique_values(column, current_filters):
+   <span class="tok-string">""</span>"
+   Retrieves sorted unique values <span class="tok-keyword">for</span> a specified column from the dqe_rule_dqe_config table
+   based <span class="tok-keyword">on</span> the current_filters applied.
+   <span class="tok-string">""</span>"
+   query = f<span class="tok-string">"SELECT DISTINCT {column} FROM dqe_rule_dqe_config"</span>
+   <span class="tok-keyword">if</span> current_filters:
+       filter_conditions = <span class="tok-string">" AND "</span>.join(
+           [f<span class="tok-string">"{col} = '{val}'"</span> <span class="tok-keyword">for</span> col, val <span class="tok-keyword">in</span> current_filters.items() <span class="tok-keyword">if</span> val]
+       )
+       <span class="tok-keyword">if</span> filter_conditions:
+           query += f<span class="tok-string">" WHERE {filter_conditions}"</span>
+   df = fetch_data(query)
+   <span class="tok-keyword">return</span> sorted(df[column].dropna().tolist())
+
+def reset_filters():
+   <span class="tok-string">""</span>"
+   Resets all filter selections <span class="tok-keyword">in</span> the session state.
+   <span class="tok-string">""</span>"
+   <span class="tok-keyword">for</span> key <span class="tok-keyword">in</span> filters.keys():
+       st.session_state[key] = <span class="tok-string">''</span>
+
+<span class="tok-comment"># Send email def</span>
+@st.cache_data
+def send_email_graph_api(subject, body):
+   <span class="tok-string">""</span><span class="tok-string">"Send email using Microsoft Graph API"</span><span class="tok-string">""</span>
+   <span class="tok-comment"># Load email configuration</span>
+   config_path = Path(__file__).parent / <span class="tok-string">'email_config.yaml'</span>
+   <span class="tok-keyword">with</span> open(config_path) <span class="tok-keyword">as</span> f:
+       config = yaml.safe_load(f)
+
+   <span class="tok-comment"># Initialize MSAL client</span>
+   app = msal.ConfidentialClientApplication(
+       config[<span class="tok-string">'clientId'</span>],
+       authority=f<span class="tok-string">"https://login.microsoftonline.com/{config['tenantId']}"</span>,
+       client_credential=config[<span class="tok-string">'clientSecret'</span>]
+   )
+
+   <span class="tok-comment"># Get access token</span>
+   result = app.acquire_token_silent([<span class="tok-string">"https://graph.microsoft.com/.default"</span>], account=None)
+   <span class="tok-keyword">if</span> not result:
+       result = app.acquire_token_for_client([<span class="tok-string">"https://graph.microsoft.com/.default"</span>])
+
+   <span class="tok-keyword">if</span> <span class="tok-string">"access_token"</span> <span class="tok-keyword">in</span> result:
+       <span class="tok-comment"># Prepare email message with updated recipient address</span>
+       email_msg = {
+           <span class="tok-string">"message"</span>: {
+               <span class="tok-string">"subject"</span>: subject,
+               <span class="tok-string">"body"</span>: {
+                   <span class="tok-string">"contentType"</span>: <span class="tok-string">"Text"</span>,
+                   <span class="tok-string">"content"</span>: body
+               },
+               <span class="tok-string">"toRecipients"</span>: [
+                   {
+                       <span class="tok-string">"emailAddress"</span>: {
+                           <span class="tok-string">"address"</span>: <span class="tok-string">"knhkg.c3po@kuehne-nagel.com"</span>
+                       }
+                   }
+               ]
+           }
+       }
+
+       <span class="tok-comment"># Send email using Graph API (update endpoint to reflect the sending user)</span>
+       headers = {
+           <span class="tok-string">'Authorization'</span>: <span class="tok-string">'Bearer '</span> + result[<span class="tok-string">'access_token'</span>],
+           <span class="tok-string">'Content-Type'</span>: <span class="tok-string">'application/json'</span>
+       }
+       response = requests.post(
+           <span class="tok-string">'https://graph.microsoft.com/v1.0/users/knhkg.c3po@kuehne-nagel.com/sendMail'</span>,
+           headers=headers,
+           json=email_msg
+       )
+       
+       <span class="tok-keyword">if</span> response.status_code == <span class="tok-number">202</span>:
+           st.success(<span class="tok-string">"Email sent successfully!"</span>)
+       <span class="tok-keyword">else</span>:
+           st.error(f<span class="tok-string">"Failed to send email: {response.text}"</span>)
+   <span class="tok-keyword">else</span>:
+       st.error(f<span class="tok-string">"Failed to get access token: {result.get('error_description')}"</span>)
+
+<span class="tok-comment"># Initialize Streamlit page configuration</span>
+st.set_page_config(layout=<span class="tok-string">"wide"</span>)
+st.title(<span class="tok-string">"Querying ⛁ dqe_rule_dqe_config"</span>)
+
+<span class="tok-comment"># Sidebar header for filter options</span>
+st.sidebar.header(<span class="tok-string">'Filter Options'</span>)
+
+<span class="tok-comment"># Initialize filters without default values</span>
+filters = {
+   <span class="tok-string">'STATUS'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'CUSTOMER_CODE'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'SOURCE'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'GRANULARITY'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'VALIDATION_TYPE'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'REGION'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'TRADE_DIRECTION'</span>: <span class="tok-string">''</span>,
+   <span class="tok-string">'RULE_KEY'</span>: <span class="tok-string">''</span>
+}
+
+<span class="tok-comment"># Button to clear all filters</span>
+<span class="tok-keyword">if</span> st.sidebar.button(<span class="tok-string">'Clear All Filters'</span>):
+   reset_filters()
+
+<span class="tok-comment"># Initialize current_filters based on session state</span>
+current_filters = {k: v <span class="tok-keyword">for</span> k, v <span class="tok-keyword">in</span> filters.items() <span class="tok-keyword">if</span> st.session_state.get(k)}
+
+<span class="tok-comment"># Status filter</span>
+status_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'STATUS'</span>, current_filters)
+status = st.sidebar.radio(<span class="tok-string">'Status'</span>, options=status_options, key=<span class="tok-string">'STATUS'</span>)
+current_filters[<span class="tok-string">'STATUS'</span>] = status <span class="tok-keyword">if</span> status <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Customer Code filter (sorted alphabetically for requirement 1)</span>
+customer_code_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'CUSTOMER_CODE'</span>, current_filters)
+customer_code = st.sidebar.selectbox(<span class="tok-string">'Customer Code'</span>, options=sorted(customer_code_options), key=<span class="tok-string">'CUSTOMER_CODE'</span>)
+current_filters[<span class="tok-string">'CUSTOMER_CODE'</span>] = customer_code <span class="tok-keyword">if</span> customer_code <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Source filter</span>
+source_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'SOURCE'</span>, current_filters)
+source = st.sidebar.radio(<span class="tok-string">'Source'</span>, options=source_options, key=<span class="tok-string">'SOURCE'</span>)
+current_filters[<span class="tok-string">'SOURCE'</span>] = source <span class="tok-keyword">if</span> source <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Granularity filter</span>
+granularity_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'GRANULARITY'</span>, current_filters)
+granularity = st.sidebar.selectbox(<span class="tok-string">'Granularity'</span>, options=granularity_options, key=<span class="tok-string">'GRANULARITY'</span>)
+current_filters[<span class="tok-string">'GRANULARITY'</span>] = granularity <span class="tok-keyword">if</span> granularity <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Validation Type filter</span>
+validation_type_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'VALIDATION_TYPE'</span>, current_filters)
+validation_type = st.sidebar.radio(<span class="tok-string">'Validation Type'</span>, options=validation_type_options, key=<span class="tok-string">'VALIDATION_TYPE'</span>)
+current_filters[<span class="tok-string">'VALIDATION_TYPE'</span>] = validation_type <span class="tok-keyword">if</span> validation_type <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Region filter</span>
+region_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'REGION'</span>, current_filters)
+region = st.sidebar.selectbox(<span class="tok-string">'Region'</span>, options=region_options, key=<span class="tok-string">'REGION'</span>)
+current_filters[<span class="tok-string">'REGION'</span>] = region <span class="tok-keyword">if</span> region <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Trade Direction filter</span>
+trade_direction_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'TRADE_DIRECTION'</span>, current_filters)
+trade_direction = st.sidebar.radio(<span class="tok-string">'Trade Direction'</span>, options=trade_direction_options, key=<span class="tok-string">'TRADE_DIRECTION'</span>)
+current_filters[<span class="tok-string">'TRADE_DIRECTION'</span>] = trade_direction <span class="tok-keyword">if</span> trade_direction <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Rule Key filter</span>
+rule_key_options = [<span class="tok-string">''</span>] + get_unique_values(<span class="tok-string">'RULE_KEY'</span>, current_filters)
+rule_key = st.sidebar.selectbox(<span class="tok-string">'Rule Key'</span>, options=rule_key_options, key=<span class="tok-string">'RULE_KEY'</span>)
+current_filters[<span class="tok-string">'RULE_KEY'</span>] = rule_key <span class="tok-keyword">if</span> rule_key <span class="tok-keyword">else</span> <span class="tok-string">''</span>
+
+<span class="tok-comment"># Apply Filters button</span>
+<span class="tok-keyword">if</span> st.sidebar.button(<span class="tok-string">'Apply Filters'</span>):
+   <span class="tok-comment"># Update filters dictionary with selected values</span>
+   filters[<span class="tok-string">'STATUS'</span>] = status <span class="tok-keyword">if</span> status <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'CUSTOMER_CODE'</span>] = customer_code <span class="tok-keyword">if</span> customer_code <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'SOURCE'</span>] = source <span class="tok-keyword">if</span> source <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'GRANULARITY'</span>] = granularity <span class="tok-keyword">if</span> granularity <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'VALIDATION_TYPE'</span>] = validation_type <span class="tok-keyword">if</span> validation_type <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'REGION'</span>] = region <span class="tok-keyword">if</span> region <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'TRADE_DIRECTION'</span>] = trade_direction <span class="tok-keyword">if</span> trade_direction <span class="tok-keyword">else</span> None
+   filters[<span class="tok-string">'RULE_KEY'</span>] = rule_key <span class="tok-keyword">if</span> rule_key <span class="tok-keyword">else</span> None
+
+   <span class="tok-comment"># Construct SQL query based on filters</span>
+   filter_conditions = <span class="tok-string">" AND "</span>.join(
+       [f<span class="tok-string">"{col} = '{val}'"</span> <span class="tok-keyword">for</span> col, val <span class="tok-keyword">in</span> filters.items() <span class="tok-keyword">if</span> val]
+   )
+   query = <span class="tok-string">"SELECT * FROM dqe_rule_dqe_config"</span>
+   <span class="tok-keyword">if</span> filter_conditions:
+       query += f<span class="tok-string">" WHERE {filter_conditions}"</span>
+
+   <span class="tok-comment"># Fetch data and display</span>
+   df = fetch_data(query)
+   st.write(f<span class="tok-string">"Number of rows returned: {len(df)}"</span>)
+   st.dataframe(df)
+
+   <span class="tok-comment"># Send email</span>
+   timestamp = datetime.datetime.now().strftime(<span class="tok-string">"%Y-%m-%d %H:%M:%S"</span>)
+   subject = f<span class="tok-string">"{timestamp} Filters applied"</span>
+   body = f<span class="tok-string">"Number of rows returned: {len(df)}\n\n{df.to_string()}"</span>
+   
+   send_email_graph_api(subject, body) 
+
+ </code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><details open data-fold-storage-key="fold:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770101055_15"><summary>good</summary><label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100989_10" /><span>good</span></label>
+<label class="todo"><input type="checkbox" checked data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100994_11" /><span>better</span></label>
+<label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770100999_12" /><span>best</span></label>
+<label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784792770101003_13" /><span>bad</span></label>
+<ul><li>[ ]</li></ul></details></div>
+<div class="block-row" style="margin-bottom:12px;"><p>Yes, it works now !~!~</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>what else I can add? share map location</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>📍 <em>Map: Westminster, Millbank, City of Westminster, Greater London, England, SW1P 3JX, United Kingdom</em></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>changed to london Westminster</p></div>
+<div class="block-row" style="margin-bottom:12px;"><h2>h22</h2></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="test hello sub page-7f25d3f5/page.html">test hello sub page</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../second page 2nd-abba2f9d/page.html">second page 2nd</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/archive/second_page_2nd_20260723T225110.zip" target="_self">second page 2nd (.zip) (.zip)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><figure><img src="../../attachments/images/JPEG_20260723T164508.jpg" alt="JPEG_20260723T164508" /><figcaption>JPEG_20260723T164508</figcaption></figure></div>
+<div class="block-row" style="margin-bottom:12px;"><div class="embed-placeholder"><strong>YouTube</strong><p></p><a href="https://m.youtube.com/watch?v=VGOsH1Gp8SE&amp;pp=QAFIAg%3D%3D">Open when online</a></div></div>
+<div class="block-row" style="margin-bottom:12px;"><p>will it restore</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>why not update?</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/pdf/商業登記證明_79436(SO)_20260723T164632.pdf" target="_self">商業登記證明 79436(SO)_20260723T164632 (.pdf) (.pdf)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/files/商業登記證明_79436(SO)_20260723T164632.xlsx" target="_self">商業登記證明 79436(SO)_20260723T164632 (.xlsx) (.xlsx)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/files/Monchhichi_in_Macau_20260802T163259.mp3" target="_self">Monchhichi in Macau_20260802T163259 (.mp3)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/files/Columns_20260723T224916.xlsx" target="_self">Columns (.xlsx) (.xlsx)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/pdf/Columns_20260723T224855.pdf" target="_self">Columns (.pdf) (.pdf)</a></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>1. Each block should have a litter bit gap between blocks. now 2 text blocks and I cannot define where is end of 1st text block and where is the start of 2nd block.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>2. image block, draw over image, it works to draw on image, however after save, what I drew was not on the correct image position. the scale and size issue make the drawing not on "what you see what you get". please align the image and the canvas and the tools that user will draw.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>3. Upload file block, test .mp3 file uploaded but click it will crash/auto close the app. fix it and suppose this app will be wildly used in android/iOS/Mac/windows/Linux (5 platforms). so fix it to adapt various environments</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>4. make sure delete page link will not only delete page link(html), but also delete attachments related to that html</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>5. table block: all the placeholder should be pale in text.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>6. make sure Advanced control map block is the same with map block. Keep DRY everywhere in this project </p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>7. Advanced control: when "Generate page link" finished generate a page link, generate a QR code accordance with the page link in next block (just above divider).  </p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>8. add block_id, use random NanoID 6 digits with copy function (copy those 6 digits NanoID with # as prefix, for example: #1a2b3c). place it in left hand side 6 dot menu, above Delete block and divider; also, name it as "Copy block ID #1a2b3c", above this with one divider line. block_id with the block will never change. but the block can be deleted and block_id will be deleted as well.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>9. in Advance control: add page_id, use random NanoID 6 digits with copy function. place it above the map block. page_id with the block will never change. but the page can be delete and page_id will be deleted as well.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>10. text block: left hand side 6 dot menu, after "Text color", add "Mask with asterisk (*)", "Copy text"。if the current block text is masked with asterisk, then the left hand side 6 dot menu has to change "Mask with asterisk (*)" to "Unmask". Masked text in GitHub pages should keep masking; "Copy text" is going to copy the whole block text. allow user to select text across multiple blocks, android and iOS now can only select text with the block.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>11. any block type, left hand side 6 dot menu, above "Delete block" and divider, add "Split block". then the function is going to add one more block horizontally. new block_id grant for the right new block, because the new block was splited from the left block, the left block_id remains unchanged. the limitation is the same row only allow up to 8 blocks. the splited blocks are shared the width equally.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>12. Insert block, in between Upload file and YouTube embed, add "Upload to Telegram". Implement a Flutter StorageProvider named TelegramStorageProvider using Telegram MTProto client APIs instead of Bot API. Authenticate users via phone number, OTP, and optional 2FA, upload files to the user's Saved Messages, persist Telegram message_id and metadata in SQLite, and support file listing, retrieval, download, deletion, and synchronization across Android, iOS, Windows, macOS and Linux. under "Connect to GitHub" button on Settings, add "Connect to Telegram" button. user should link to telegram before uploading file to telegram.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>13. "Upload to Telegram" structure in sqlite</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> CREATE TABLE bucket (</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> ID INTEGER PRIMARY KEY,</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> 'File name' TEXT,</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> message_id TEXT, </p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>remote_path TEXT,</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>created_at DATETIME8</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>Label TEXT);</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>14. Library page, in between Library and Calendar, add Bucket tab, this tab shows the sqlite table bucket; filename allows user to click and download the file where is in telegram. the columns "File name" and "Label" allow user to edit freely. in Library page search bar can search sqlite include "File name" and user self defined "Label" as well.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>15. Insert block, in between Upload file and YouTube embed, add "Take pic as scan A4". place it above "Link to page". the function is taking photo become A4 size pdf like scan effect. auto detect 4 corners and adjust and save as A4 pdf.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>16. Advanced control: when "Generate page link"/"Refresh page link" is clicked. Auto sync to GitHub first(git add ., git commit, git push)</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>17. Settings tab, "Manual sync" should be removed. replace with 2 new buttons. 1 is "Manual sync to GitHub" (git add ., git commit, git push), another one is "Manual sync from GitHub" (git fetch, git reset --hard). "Clear pending commits" button remain unchanged. place those 3 buttons in 3 rows.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>18. in any situations, new device or new link with GitHub, there may have some note/data residual before linking to GitHub, after user link to GitHub, don't decide for the user to git pull or git push. let user manually first time to press "Manual sync to GitHub"/"Manual sync from GitHub" to decide local data or GitHub data as the single source of turth. after the first sync decision, the latest timestamp is the single source of turth. that means if GitHub page.md has been updated, then the rest device(s) should "Manual sync from GitHub"; if local device has any changes like update a block, then the device should "Manual sync to GitHub". </p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>19. Keep the PageCrypt password in GitHub Actions Secrets. Run PageCrypt during the build GitHub Pages. Everytime user clicks "Generate page link" or "Refresh page link", ask user what password would like to set. if left blank, then the GitHub pages is public as no password.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>20. remove all function related to GitLab. no GitLab login is needed in this project.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>21. if already connected GitHub, any changes should be auto sync follow "batch interval" time. of course, it should respect the rest of sync policy in Settings set by user.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>22. add OAuth alongside with PAT login to GitHub.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>ask me questions if there is any unclear</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>make sure all above tasks are tested and verified working before stop iteration.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>#codebase</p></div>
+<div class="block-row" style="margin-bottom:12px;"><figure><img src="../../attachments/images/JPEG_20260802T164036.jpg" alt="JPEG_20260802T164036" /><figcaption>JPEG_20260802T164036</figcaption></figure></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><figure><img src="../../attachments/images/JPEG_20260802T164010.jpg" alt="JPEG_20260802T164010" /><figcaption>JPEG_20260802T164010</figcaption></figure></div>
+<div class="block-row" style="margin-bottom:12px;"><p>23. Settings tab, add new section: "Large Language Model". Provide https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> for user to download. When clicked, Save it into sandbox storage, just suggest as below, help me to best design it:</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>   - Android: context.getFilesDir()</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>   - iOS: Application Support directory</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>   - Windows: %LOCALAPPDATA%/MyApp/models/</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>   - macOS: ~/Library/Application Support/MyApp/models/</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>   - Linux: ~/.myapp/models/</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>Ensure directory creation if missing. Show progress and completion status. Allow later offline access to the model file.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><br /></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><details open data-fold-storage-key="fold:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:md_1784829698796649_40"><summary></summary><ul><li>hide with asterisk</li></ul>
+<ul><li>copy text</li></ul>
+<ul><li>save as draft and send message</li></ul>
+<ul><li>mermaid Mark Down</li></ul></details></div>
+<div class="block-row" style="margin-bottom:12px;"><p>text block</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>add SQLite as database</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>GitHub pages + Formspree(store submission), GitHub actions to update Json and send FCM, flutter sync SQLite </p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>take photo become A4 size pdf like scan effect</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>pdf ocr， tesseract OCR, if complicated, use paddle ocr(ncrr offline), design like allow user to download their languages </p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>​核心要求是“真·六平台全覆盖”，请改选方案(llama.cpp + FFI)</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>​如果你需要同一个 Flutter 项目一套代码无缝跑满六大平台（Android, iOS, Windows, macOS, Linux, Web），推荐方案（flutter_llama_cpp / llama.cpp）：</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>​核心原理：llama.cpp 是纯 C/C++ 写的，通过 Flutter 的 FFI（Foreign Function Interface）机制直连。只要有 C++ 编译器的地方就能跑。<br />​跨平台兼容性：<br />​Windows ➔ 调用 Metal / CUDA / Vulkan / CPU<br />​macOS ➔ 调用 Apple Silicon Metal<br />​Linux ➔ 调用 Vulkan / OpenCL / CPU<br />​iOS / Android ➔ 调用 GPU / CPU  <br />​Web ➔ 编译为 WASM 运行  <br />​模型格式：Gemma 4 模型的 .gguf 格式在 llama.cpp 社区有现成的完整支持，下载即用。</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>​使用 Flutter 官方插件 path_provider，将模型静默下载到应用的私有文档目录中</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>區分free和paid plan</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>接入 RevenueCat (Flutter Package: purchases_flutter)</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>​RevenueCat 是独立开发圈的行业标准（对月流水小于 $10,000 美元的开发者完全免费）。</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>1✅ Create Bot</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> 2✅ Create Private Channel</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> 3✅ Add Bot as Admin</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p> 4✅ Get Channel ID<br /><br />-- Upload a file via API<br /> curl -F document=@report.pdf \<br /> "https://api.telegram.org/bot&lt;TOKEN&gt;/sendDocument?chat_id=-1001234567890"<br /> ``<br /><br />get the file_id:<br /> "document": {<br /> "file_id": "BQACAgUAAxkBA..."<br /><br />-- Structure it in sqlite<br /> CREATE TABLE file_storage (<br /> id INTEGER PRIMARY KEY,<br /> provider TEXT,<br /> filename TEXT,<br /> ile_id TEXT,<br /> remote_path TEXT,<br /> created_at DATETIME8);<br /><br /># provider can be GitHub or Telegram to log<br /><br />-- Retrieve file later<br />https://api.telegram.org/bot&lt;TOKEN&gt;/getFile?file_id=BQACAgUAAxkBA...<br /><br />telegram returns:<br /> "result": {<br /> "file_path": "documents/file_123.pdf"</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>* ****** *** ****** *******</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>Gemma‑4‑E4B‑it GGUF 本身就是純文字模型</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>****** ****** ******* **** ******* ********* *********** **********************</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>聲音同樣會先經過 ASR（語音轉文字）flutter_whisper Base 模型（約 142MB），再交給文字模型。</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>最後，Gemma‑4‑E4B‑it 只接收文字 prompt，並輸出文字結果。</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>PowerShell split into 1.5gb each</p></div>
+<div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-powershell"><span class="tok-comment"># 設定檔案路徑與分段大小 (1.5GB)</span>
+$inputFile = <span class="tok-string">"C:\Users\lawre\Downloads\gemma-4-E4B-it-Q4_0.gguf"</span>
+$chunkSize = 1500MB
+$buffer = New-Object byte[] $chunkSize
+$i = <span class="tok-number">0</span>
+
+$fs = [System.IO.File]::OpenRead($inputFile)
+<span class="tok-keyword">while</span> ($fs.Position -lt $fs.Length) {
+    $read = $fs.Read($buffer, <span class="tok-number">0</span>, $chunkSize)
+    $outFile = <span class="tok-string">"C:\Users\lawre\Downloads\part-{0:D3}"</span> -f $i
+    $outStream = [System.IO.File]::OpenWrite($outFile)
+    $outStream.Write($buffer, <span class="tok-number">0</span>, $read)
+    $outStream.Close()
+    $i++
+}
+$fs.Close()
+</code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><p>Powershell merge</p></div>
+<div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-powershell">$outFile = <span class="tok-string">"C:\Users\lawre\Downloads\gemma-4-E4B-it-Q4_0.gguf"</span>
+$files = Get-ChildItem <span class="tok-string">"C:\Users\lawre\Downloads\part-*"</span> | Sort-Object Name
+$outStream = [System.IO.File]::OpenWrite($outFile)
+
+foreach ($file <span class="tok-keyword">in</span> $files) {
+    $bytes = [System.IO.File]::ReadAllBytes($file.FullName)
+    $outStream.Write($bytes, <span class="tok-number">0</span>, $bytes.Length)
+}
+$outStream.Close()
+</code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><p>合併後 sha256sum 驗證:</p></div>
+<div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-powershell">certutil -hashfile gemma-<span class="tok-number">4</span>-E4B-it-Q4_0.gguf SHA256
+</code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><p><br />I need code that handles large model files split into multiple parts.<br /><br />1. On server side, use standard Unix `split` to break a 5GB file into 3 parts:<br />   split -b 1900m gemma-model.gguf gemma-part-<br /><br />2. Upload each part (≤2GB) to GitHub Release.<br /><br />3. In Flutter client:<br />   - Download all three files sequentially using `http` or `dio`.<br />   - Save them into app sandbox (platform-specific path).<br />   - After each download, verify checksum (e.g. SHA256).<br />   - When all downloads complete, concatenate them in correct order:<br />     cat gemma-part-aa gemma-part-ab gemma-part-ac &gt; gemma-model.gguf<br />     (or equivalent Dart File I/O code).<br />   - Ensure final file integrity matches original checksum.<br /><br />Goal: user presses one button → app downloads 3 parts → verifies → merges → produces full GGUF model ready for inference.<br /></p></div>
+      </article>
+      <script>
+(function() {
+  function safeGet(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_) {}
+  }
+
+  function initPersistence() {
+    const pageId = '4c5fcb0e-f517-42d3-a20f-411ea0e58d4e';
+    const inputs = document.querySelectorAll('input[data-todo-storage-key]');
+    const detailsNodes = document.querySelectorAll('details[data-fold-storage-key]');
+    inputs.forEach((input) => {
+      const key = input.getAttribute('data-todo-storage-key');
+      if (!key || !key.startsWith('todo:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        input.checked = storedValue === '1';
+      }
+      input.addEventListener('change', () => {
+        safeSet(key, input.checked ? '1' : '0');
+      });
+    });
+
+    detailsNodes.forEach((details) => {
+      const key = details.getAttribute('data-fold-storage-key');
+      if (!key || !key.startsWith('fold:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        details.open = storedValue === '1';
+      }
+      details.addEventListener('toggle', () => {
+        const persist = () => safeSet(key, details.open ? '1' : '0');
+        if (typeof window.requestAnimationFrame === 'function') {
+          window.requestAnimationFrame(persist);
+        } else {
+          persist();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPersistence, { once: true });
+  } else {
+    initPersistence();
+  }
+})();
+</script>
+
+    </main>
+  </body>
+</html>

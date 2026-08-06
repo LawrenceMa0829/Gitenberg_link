@@ -1,18 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gitenberg OAuth Callback</title>
-  </head>
-  <body>
-    <p>Returning to Gitenberg...</p>
-    <script>
-      (function () {
-        const target = "gitenberg://oauth/callback";
-        const next = target + (window.location.search || "") + (window.location.hash || "");
-        window.location.replace(next);
-      })();
-    </script>
-  </body>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gitenberg - OAuth Authorization complete</title>
+  <style>
+    :root {
+      --primary: #f6821f; /* Cloudflare Orange */
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --text: #c9d1d9;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    p {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 12px 0;
+      background-color: var(--primary);
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      box-sizing: border-box;
+      transition: opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .spinner {
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="spinner"></div>
+    <div class="icon">🚀</div>
+    <h1>Cloudflare Authorization successful！</h1>
+    <p>Sending the authorization key back <strong>Gitenberg App</strong>...</p>
+    
+    <a id="app-redirect-btn" class="btn" href="#">Open Gitenberg App</a>
+  </div>
+
+  <script>
+    (function() {
+      const currentSearchParams = window.location.search;
+      
+      const targetAppUrl = "gitenberg://oauth-callback" + currentSearchParams;
+
+      const btn = document.getElementById("app-redirect-btn");
+      btn.href = targetAppUrl;
+
+      window.location.href = targetAppUrl;
+
+      setTimeout(function() {
+        document.querySelector('.spinner').style.display = 'none';
+        btn.textContent = "Please click here to return App";
+      }, 1500);
+    })();
+  </script>
+
+</body>
 </html>

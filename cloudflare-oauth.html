@@ -2,11 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=shares/da5e0cef-4718-4f7b-a6db-d7b9a9c6f531/pages/cloudflare-oauth-da5e0cef/page.html" />
-    <title>cloudflare-oauth</title>
-    <link rel="canonical" href="shares/da5e0cef-4718-4f7b-a6db-d7b9a9c6f531/pages/cloudflare-oauth-da5e0cef/page.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gitenberg OAuth Callback</title>
   </head>
   <body>
-    <p><a href="shares/da5e0cef-4718-4f7b-a6db-d7b9a9c6f531/pages/cloudflare-oauth-da5e0cef/page.html">Open cloudflare-oauth</a></p>
+    <p>Returning to Gitenberg...</p>
+    <script>
+      (function () {
+        const target = "gitenberg://oauth/callback";
+        const next = target + (window.location.search || "") + (window.location.hash || "");
+        window.location.replace(next);
+      })();
+    </script>
   </body>
 </html>

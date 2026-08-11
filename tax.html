@@ -2,11 +2,120 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=shares/11e493c1-f25e-45b7-9e6e-8417b2b3baed/pages/Tax-11e493c1/page.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tax</title>
     <link rel="canonical" href="shares/11e493c1-f25e-45b7-9e6e-8417b2b3baed/pages/Tax-11e493c1/page.html" />
+    <style>
+      :root { color-scheme: light; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", "Noto Sans", sans-serif;
+        background: linear-gradient(180deg, #f6f7f9 0%, #eceff5 100%);
+        display: grid;
+        place-items: center;
+      }
+      .card {
+        width: min(520px, calc(100vw - 32px));
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+      p {
+        margin: 0;
+        color: #4b5563;
+        line-height: 1.5;
+      }
+      .field {
+        margin-top: 14px;
+      }
+      input {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        padding: 11px 12px;
+        font-size: 0.95rem;
+        box-sizing: border-box;
+      }
+      button {
+        margin-top: 12px;
+        width: 100%;
+        border: 0;
+        border-radius: 10px;
+        background: #0f62fe;
+        color: #fff;
+        padding: 11px 12px;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: progress;
+      }
+      .error {
+        margin-top: 10px;
+        color: #b91c1c;
+        min-height: 1.2em;
+      }
+    </style>
   </head>
   <body>
-    <p><a href="shares/11e493c1-f25e-45b7-9e6e-8417b2b3baed/pages/Tax-11e493c1/page.html">Open Tax</a></p>
+    <div class="card">
+      <h1>Tax</h1>
+      <div class="field">
+        <input id="pagecrypt-pass" type="password" placeholder="Enter password" autocomplete="current-password" />
+        <button id="pagecrypt-open" type="button">Open page</button>
+        <div id="pagecrypt-error" class="error"></div>
+      </div>
+    </div>
+    <script>
+      const target = "shares/11e493c1-f25e-45b7-9e6e-8417b2b3baed/pages/Tax-11e493c1/page.html";
+      const expectedHash = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3";
+      const input = document.getElementById("pagecrypt-pass");
+      const button = document.getElementById("pagecrypt-open");
+      const error = document.getElementById("pagecrypt-error");
+
+      async function sha256Hex(value) {
+        const bytes = new TextEncoder().encode(value);
+        const digest = await crypto.subtle.digest("SHA-256", bytes);
+        return Array.from(new Uint8Array(digest))
+          .map((b) => b.toString(16).padStart(2, "0"))
+          .join("");
+      }
+
+      async function attemptOpen() {
+        error.textContent = "";
+        button.disabled = true;
+        try {
+          const value = (input.value || "").trim();
+          const actualHash = await sha256Hex(value);
+          if (actualHash !== expectedHash) {
+            error.textContent = "Incorrect password.";
+            input.focus();
+            input.select();
+            return;
+          }
+          location.replace(target);
+        } catch (_) {
+          error.textContent = "Could not validate password in this browser.";
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      button.addEventListener("click", attemptOpen);
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          attemptOpen();
+        }
+      });
+      input.focus();
+    </script>
   </body>
 </html>

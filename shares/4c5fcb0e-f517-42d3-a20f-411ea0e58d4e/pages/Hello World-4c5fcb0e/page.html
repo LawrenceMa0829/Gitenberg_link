@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <style>:root {
+  --paper: #f8f4e8;
+  --ink: #171819;
+  --muted: #6f685d;
+  --line: #d7cdb9;
+  --accent: #1d5b49;
+  --accent-soft: #d7ebe1;
+  --callout: #fff2ca;
+  --code: #162026;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(29, 91, 73, 0.16), transparent 35%),
+    linear-gradient(180deg, #f6f1e3 0%, #fcfbf7 100%);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+}
+
+.page-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 14px 64px;
+}
+
+.page-cover {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.page-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.hero.with-cover {
+  margin: -42px 20px 0;
+  width: calc(100% - 40px);
+  padding-top: 34px;
+}
+
+.hero-accent {
+  position: absolute;
+  inset: auto -80px -80px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(29, 91, 73, 0.22), rgba(29, 91, 73, 0));
+}
+
+.hero-icon-shell {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero.with-cover .hero-icon-shell {
+  transform: translateY(-38px);
+  margin-bottom: -24px;
+}
+
+.hero-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-icon-emoji {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.hero-icon-empty {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 0.95;
+}
+
+.meta {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 28px;
+}
+
+.tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-body {
+  display: grid;
+  gap: 18px;
+}
+
+p,
+li,
+blockquote,
+summary,
+td,
+.embed-placeholder,
+.todo span {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  margin: 14px 0 2px;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 4px solid var(--accent);
+  color: #2f413b;
+}
+
+.callout {
+  padding: 16px 18px;
+  border-left: 4px solid #d09b25;
+  border-radius: 18px;
+  background: var(--callout);
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.embed-placeholder {
+  border: 1px dashed #a99571;
+  border-radius: 18px;
+  background: #f4ecdb;
+  padding: 18px;
+}
+
+.columns {
+  display: grid;
+  gap: 16px;
+}
+
+.column {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.columns-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.columns-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.table-summary-row td {
+  background: rgba(215, 205, 185, 0.22);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f4a43;
+}
+
+td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+figure {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+figcaption {
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+pre {
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--code);
+  color: #f5f1e5;
+  overflow: auto;
+}
+
+a {
+  color: var(--accent);
+}
+
+@media (max-width: 740px) {
+  .page-shell {
+    padding: 20px 10px 52px;
+  }
+
+  .page-cover {
+    height: 170px;
+    border-radius: 24px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero.with-cover {
+    margin: -26px 10px 0;
+    width: calc(100% - 20px);
+  }
+
+  .hero.with-cover .hero-icon-shell {
+    transform: translateY(-24px);
+    margin-bottom: -12px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+pre.code-block code .tok-keyword { color: #6bdfff; font-weight: 600; }
+pre.code-block code .tok-string { color: #f4c27a; }
+pre.code-block code .tok-number { color: #ffd166; }
+pre.code-block code .tok-comment { color: #9fdd9f; font-style: italic; }
+</style>
+  </head>
+  <body>
+    <main class="page-shell">
+      
+      <header class="hero">
+        <div class="hero-accent"></div>
+        <div class="hero-icon-shell"><span class="hero-icon-emoji">🌌</span></div>
+        <div>
+          <h1>Hello World</h1>
+          <p class="meta">Updated 2026-09-01T01:01:22.717447Z</p>
+        </div>
+      </header>
+      <section class="tag-row"><span class="tag">1st</span><span class="tag">2nd</span></section>
+      <article class="page-body">
+        <div class="block-row" style="margin-bottom:12px;"><p></p></div>
+<div class="block-row" style="margin-bottom:12px;"><details open data-fold-storage-key="fold:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:f67d535b-2e23-4b80-a07b-fc5f89f1ee94"><summary>test</summary><label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:62d03170-14db-4f08-9e7d-c7c6209854a7" /><span>one</span></label>
+<label class="todo"><input type="checkbox" checked data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:f6987b61-eada-4e7c-9bf0-849e6bf70e74" /><span>two</span></label>
+<label class="todo"><input type="checkbox"  data-todo-storage-key="todo:4c5fcb0e-f517-42d3-a20f-411ea0e58d4e:202eff92-29ba-41d7-9fd3-3802a92ed9e3" /><span>three</span></label></details></div>
+<div class="block-row" style="margin-bottom:12px;"><pre class="code-block"><code class="language-python"><span class="tok-keyword">import</span> os
+print(<span class="tok-string">"Hello Worl"</span>)</code></pre></div>
+<div class="block-row" style="margin-bottom:12px;"><table><tr><td>test</td><td></td><td></td><td></td></tr>
+<tr><td>1</td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td></tr>
+<tr class="table-summary-row"><td>Sum: 6</td><td></td><td></td><td></td></tr></table></div>
+<div class="block-row" style="margin-bottom:12px;"><p>Yes, properly distilled water collected from the air is generally considered safe and potable for human consumption, provided the initial source of atmospheric moisture was not contaminated with harmful airborne pathogens or chemical pollutants that could survive the process.Detailed Explanation with Examples1. Purity Achieved by Distillation: The fundamental principle of distillation is that it separates substances based on differences in their boiling points. Pure water ($\text{H}_2\text{O}$) boils at $100^\circ \text{C}$ ($212^\circ \text{F}$). When you heat the air (or a captured droplet) until it vaporizes, this pure steam rises and leaves behind non-volatile contaminants. These impurities include:•Dissolved Salts: Minerals like sodium chloride ($\text{NaCl}$) do not evaporate; they remain in the residue left behind.•Heavy Metals: Most heavy metals are dissolved or suspended particles that do not vaporize at typical distillation temperatures.•Microorganisms (Bacteria, Viruses): While some very hardy microbes might survive extreme heat, standard distillation processes effectively kill virtually all bacteria and viruses by boiling them away.2. The Critical Caveat: Airborne Contaminants: The safety of the final product hinges entirely on what was in the air before it entered the system. Distillation is excellent at removing dissolved chemicals and biological contaminants that are suspended in liquid water, but it has limitations regarding airborne pollutants:•Volatile Organic Compounds (VOCs): If the air contains highly volatile chemical compounds (like certain industrial solvents or toxic gases), these can vaporize along with the water molecules during heating, meaning they will pass through the system and end up in your drinking water.•Particulate Matter: While fine particulates are often filtered out before distillation, extremely small, chemically reactive particles could theoretically pose a risk if not properly pre-filtered.Historical or Cultural ContextIn ancient times, people used simple solar stills (a form of passive distillation) to create potable water from brackish sources or even damp earth, demonstrating an early understanding of phase change for purification. Modern AWG systems use highly engineered membranes and heat exchangers to achieve this same goal on a much larger scale.Practical Applications or ImplicationsFor home use, if you are using a standard dehumidifier/AWG unit that uses condensation (cooling), the water collected is generally safe if the air quality is good. If you are building a system involving heating and boiling (true distillation), you must ensure your intake air is relatively clean to avoid distilling harmful gases into your potable water supply.References or Suggestions for Further ExplorationIf you are concerned about purity, look into multi-stage purification systems:1.Pre-filtration: To remove dust and large particulates from the incoming air.2.Condensation/Distillation: To separate pure $\text{H}_2\text{O}$ vapor from dissolved solids.3.Post-treatment: Adding a final filtration stage (like activated carbon) to capture any remaining volatile organic compounds that might have been present in the air.</p></div>
+<div class="block-row" style="margin-bottom:12px;"><aside class="callout"></aside></div>
+<div class="block-row" style="margin-bottom:12px;"><p><a href="../../attachments/epub/世界奇幻地图_(爱德华·布鲁克-海钦)_(z-library.sk,_1lib.sk,_z-lib_20260901T150100.epub" target="_self">世界奇幻地图 (爱德华·布鲁克-海钦) (z-library.sk, 1lib.sk, z-lib.sk)_20260901T150058 (.epub)</a></p></div>
+      </article>
+      <script>
+(function() {
+  function safeGet(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_) {}
+  }
+
+  function initPersistence() {
+    const pageId = '4c5fcb0e-f517-42d3-a20f-411ea0e58d4e';
+    const inputs = document.querySelectorAll('input[data-todo-storage-key]');
+    const detailsNodes = document.querySelectorAll('details[data-fold-storage-key]');
+    inputs.forEach((input) => {
+      const key = input.getAttribute('data-todo-storage-key');
+      if (!key || !key.startsWith('todo:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        input.checked = storedValue === '1';
+      }
+      input.addEventListener('change', () => {
+        safeSet(key, input.checked ? '1' : '0');
+      });
+    });
+
+    detailsNodes.forEach((details) => {
+      const key = details.getAttribute('data-fold-storage-key');
+      if (!key || !key.startsWith('fold:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        details.open = storedValue === '1';
+      }
+      details.addEventListener('toggle', () => {
+        const persist = () => safeSet(key, details.open ? '1' : '0');
+        if (typeof window.requestAnimationFrame === 'function') {
+          window.requestAnimationFrame(persist);
+        } else {
+          persist();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPersistence, { once: true });
+  } else {
+    initPersistence();
+  }
+})();
+</script>
+
+    </main>
+  </body>
+</html>

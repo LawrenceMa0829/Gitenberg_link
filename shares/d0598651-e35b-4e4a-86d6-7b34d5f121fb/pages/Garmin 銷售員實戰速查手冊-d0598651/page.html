@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garmin 銷售員實戰速查手冊</title>
+    <style>:root {
+  --paper: #f8f4e8;
+  --ink: #171819;
+  --muted: #6f685d;
+  --line: #d7cdb9;
+  --accent: #1d5b49;
+  --accent-soft: #d7ebe1;
+  --callout: #fff2ca;
+  --code: #162026;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(29, 91, 73, 0.16), transparent 35%),
+    linear-gradient(180deg, #f6f1e3 0%, #fcfbf7 100%);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+}
+
+.page-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 14px 64px;
+}
+
+.page-cover {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.page-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.hero.with-cover {
+  margin: -42px 20px 0;
+  width: calc(100% - 40px);
+  padding-top: 34px;
+}
+
+.hero-accent {
+  position: absolute;
+  inset: auto -80px -80px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(29, 91, 73, 0.22), rgba(29, 91, 73, 0));
+}
+
+.hero-icon-shell {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero.with-cover .hero-icon-shell {
+  transform: translateY(-38px);
+  margin-bottom: -24px;
+}
+
+.hero-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-icon-emoji {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.hero-icon-empty {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 0.95;
+}
+
+.meta {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 28px;
+}
+
+.tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-body {
+  display: grid;
+  gap: 18px;
+}
+
+p,
+li,
+blockquote,
+summary,
+td,
+.embed-placeholder,
+.todo span {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  margin: 14px 0 2px;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 4px solid var(--accent);
+  color: #2f413b;
+}
+
+.callout {
+  padding: 16px 18px;
+  border-left: 4px solid #d09b25;
+  border-radius: 18px;
+  background: var(--callout);
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.embed-placeholder {
+  border: 1px dashed #a99571;
+  border-radius: 18px;
+  background: #f4ecdb;
+  padding: 18px;
+}
+
+.columns {
+  display: grid;
+  gap: 16px;
+}
+
+.column {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.columns-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.columns-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.table-summary-row td {
+  background: rgba(215, 205, 185, 0.22);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f4a43;
+}
+
+td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+figure {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+figcaption {
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+pre {
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--code);
+  color: #f5f1e5;
+  overflow: auto;
+}
+
+a {
+  color: var(--accent);
+}
+
+@media (max-width: 740px) {
+  .page-shell {
+    padding: 20px 10px 52px;
+  }
+
+  .page-cover {
+    height: 170px;
+    border-radius: 24px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero.with-cover {
+    margin: -26px 10px 0;
+    width: calc(100% - 20px);
+  }
+
+  .hero.with-cover .hero-icon-shell {
+    transform: translateY(-24px);
+    margin-bottom: -12px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+pre.code-block code .tok-keyword { color: #6bdfff; font-weight: 600; }
+pre.code-block code .tok-string { color: #f4c27a; }
+pre.code-block code .tok-number { color: #ffd166; }
+pre.code-block code .tok-comment { color: #9fdd9f; font-style: italic; }
+</style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="page-cover"><img src="../../attachments/page_images/page_cover_20260818T114449.png" alt="Page cover" /></section>
+      <header class="hero with-cover">
+        <div class="hero-accent"></div>
+        <div class="hero-icon-shell"><span class="hero-icon-emoji">⌚</span></div>
+        <div>
+          <h1>Garmin 銷售員實戰速查手冊</h1>
+          <p class="meta">Updated 2026-08-19T01:06:05.967317</p>
+        </div>
+      </header>
+      <section class="tag-row"></section>
+      <article class="page-body">
+        <div class="block-row" style="margin-bottom:12px;"><p>核心專利與專業術語</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p>顧客詢問為什麼 Garmin 比較貴時，可引用下列詞彙建立信任感。<br /><br />- SatIQ™ 自動切換多頻衛星：自動偵測環境調整 GPS 頻段，在省電與定位精準度之間取得平衡。  <br />- Body Battery™ 身體能量指數：基於 HRV、睡眠與活動數據，量化身體剩餘能量，避免過度疲勞。  <br />- HRV Status 心率變異度狀態：監測自主神經系統，評估當下的訓練狀態與恢復狀況。  <br />- Power Sapphire™ 藍寶石太陽能鏡面：極致耐刮與耐衝擊，結合太陽能充電技術以延長續航。<br /><br />---<br /><br />各系列 30秒銷售話術<br /><br />| 系列 | 核心賣點 (Elevator Pitch) |<br />|---|---|<br />| Venu / vívoactive | 這款兼顧工作與生活的完美平衡，AMOLED 高畫質螢幕，監測壓力與睡眠並支援行動支付，適合想提升生活品質的人。 |<br />| Forerunner | 為跑步而生的精密儀器，能分析跑姿、規劃訓練課表並提供訓練成效數據，讓每一步更有科學依據並降低受傷風險。 |<br />| fēnix / Epix | 頂級探險首選，具軍規耐用度與地圖導航，擁有極致續航，適合攀登高山與極限運動。 |<br />| Instinct | 硬派風格與超強續航，耐摔耐熱並支援太陽能充電，適合長時間野外探索使用。 |<br /><br />---<br /><br />銷售心法<br />1. 多問問題，少背規格：先問顧客「你平時最常做什麼運動？」「是否有睡眠或壓力困擾？」從痛點切入。  <br />2. 體驗至上：請顧客親自觸摸錶帶、點擊螢幕、查看心率 widget，讓他們感受佩戴體驗以提高成交率。  <br />3. 數據賦能：說明數據的用途是幫助他們「更了解自己」，Garmin 的價值在於提供可用的數據來支持決策，而非製造焦慮。<br /><br />---<br /><br />小提醒<br />- 若需避免表格或段落被切頁，建議在樣式上使用分頁控制（例如 page-break-inside: avoid）。  <br />- 若要確保中文顯示正確，請在輸出或列印時使用支援繁體中文的字型（例如 Noto Sans CJK TC）。<br /><br />---<br /><br />&gt; 保持自信，專業的知識就是你最好的底氣。祝新工作順利</p></div>
+      </article>
+      <script>
+(function() {
+  function safeGet(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_) {}
+  }
+
+  function initPersistence() {
+    const pageId = 'd0598651-e35b-4e4a-86d6-7b34d5f121fb';
+    const inputs = document.querySelectorAll('input[data-todo-storage-key]');
+    const detailsNodes = document.querySelectorAll('details[data-fold-storage-key]');
+    inputs.forEach((input) => {
+      const key = input.getAttribute('data-todo-storage-key');
+      if (!key || !key.startsWith('todo:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        input.checked = storedValue === '1';
+      }
+      input.addEventListener('change', () => {
+        safeSet(key, input.checked ? '1' : '0');
+      });
+    });
+
+    detailsNodes.forEach((details) => {
+      const key = details.getAttribute('data-fold-storage-key');
+      if (!key || !key.startsWith('fold:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        details.open = storedValue === '1';
+      }
+      details.addEventListener('toggle', () => {
+        const persist = () => safeSet(key, details.open ? '1' : '0');
+        if (typeof window.requestAnimationFrame === 'function') {
+          window.requestAnimationFrame(persist);
+        } else {
+          persist();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPersistence, { once: true });
+  } else {
+    initPersistence();
+  }
+})();
+</script>
+
+    </main>
+  </body>
+</html>

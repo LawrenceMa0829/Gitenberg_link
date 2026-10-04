@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garmin 銷售員實戰速查手冊(碟仙版)</title>
+    <style>:root {
+  --paper: #f8f4e8;
+  --ink: #171819;
+  --muted: #6f685d;
+  --line: #d7cdb9;
+  --accent: #1d5b49;
+  --accent-soft: #d7ebe1;
+  --callout: #fff2ca;
+  --code: #162026;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(29, 91, 73, 0.16), transparent 35%),
+    linear-gradient(180deg, #f6f1e3 0%, #fcfbf7 100%);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+}
+
+.page-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 14px 64px;
+}
+
+.page-cover {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.page-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.hero.with-cover {
+  margin: -42px 20px 0;
+  width: calc(100% - 40px);
+  padding-top: 34px;
+}
+
+.hero-accent {
+  position: absolute;
+  inset: auto -80px -80px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(29, 91, 73, 0.22), rgba(29, 91, 73, 0));
+}
+
+.hero-icon-shell {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(215, 205, 185, 0.8);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero.with-cover .hero-icon-shell {
+  transform: translateY(-38px);
+  margin-bottom: -24px;
+}
+
+.hero-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-icon-emoji {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.hero-icon-empty {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 0.95;
+}
+
+.meta {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 28px;
+}
+
+.tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-body {
+  display: grid;
+  gap: 18px;
+}
+
+p,
+li,
+blockquote,
+summary,
+td,
+.embed-placeholder,
+.todo span {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  margin: 14px 0 2px;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 4px solid var(--accent);
+  color: #2f413b;
+}
+
+.callout {
+  padding: 16px 18px;
+  border-left: 4px solid #d09b25;
+  border-radius: 18px;
+  background: var(--callout);
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.embed-placeholder {
+  border: 1px dashed #a99571;
+  border-radius: 18px;
+  background: #f4ecdb;
+  padding: 18px;
+}
+
+.columns {
+  display: grid;
+  gap: 16px;
+}
+
+.column {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.columns-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.columns-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.table-summary-row td {
+  background: rgba(215, 205, 185, 0.22);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f4a43;
+}
+
+td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+figure {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+figcaption {
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+pre {
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--code);
+  color: #f5f1e5;
+  overflow: auto;
+}
+
+a {
+  color: var(--accent);
+}
+
+@media (max-width: 740px) {
+  .page-shell {
+    padding: 20px 10px 52px;
+  }
+
+  .page-cover {
+    height: 170px;
+    border-radius: 24px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero.with-cover {
+    margin: -26px 10px 0;
+    width: calc(100% - 20px);
+  }
+
+  .hero.with-cover .hero-icon-shell {
+    transform: translateY(-24px);
+    margin-bottom: -12px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+pre.code-block code .tok-keyword { color: #6bdfff; font-weight: 600; }
+pre.code-block code .tok-string { color: #f4c27a; }
+pre.code-block code .tok-number { color: #ffd166; }
+pre.code-block code .tok-comment { color: #9fdd9f; font-style: italic; }
+</style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="page-cover"><img src="../../attachments/page_images/page_cover_20260818T130527.png" alt="Page cover" /></section>
+      <header class="hero with-cover">
+        <div class="hero-accent"></div>
+        <div class="hero-icon-shell"><span class="hero-icon-emoji">⌚</span></div>
+        <div>
+          <h1>Garmin 銷售員實戰速查手冊(碟仙版)</h1>
+          <p class="meta">Updated 2026-08-18T13:08:51.121669</p>
+        </div>
+      </header>
+      <section class="tag-row"></section>
+      <article class="page-body">
+        <div class="block-row" style="margin-bottom:12px;"><p>核心產品系列速查</p></div>
+<div class="block-row" style="margin-bottom:12px;"><p><br />- Venu  <br />  - 核心賣點 / 關鍵字：AMOLED 螢幕、日常健康管理（Body Battery、睡眠、HRV）、內建通話與音樂、GPS  <br />  - 款式舉例：Venu 3、Venu 3S、Venu Sq 2  <br />  - 一句話定位：日常與運動兼顧，重視外觀與多媒體功能<br /><br />- Vivoactive  <br />  - 核心賣點 / 關鍵字：輕薄觸控、長續航、多運動模式、實用健康追蹤  <br />  - 款式舉例：Vivoactive 5  <br />  - 一句話定位：全能入門款，高性價比日常運動錶<br /><br />- Forerunner  <br />  - 核心賣點 / 關鍵字：跑步專用、精準 GPS、訓練建議、跑步動態、PacePro  <br />  - 款式舉例：Forerunner 165、265、965  <br />  - 一句話定位：跑者與三鐵選手的訓練工具<br /><br />- Fenix  <br />  - 核心賣點 / 關鍵字：旗艦戶外、軍規耐用、多頻 GPS、內建地圖、超長續航、部分款式支援太陽能  <br />  - 款式舉例：Fenix 7 Pro、Fenix 8  <br />  - 一句話定位：極限戶外與探險首選，耐用與續航最佳<br /><br />- Instinct  <br />  - 核心賣點 / 關鍵字：按鍵操控、軍規耐用、太陽能款、輕量、實用野外功能  <br />  - 款式舉例：Instinct 2 Solar、Instinct 3  <br />  - 一句話定位：粗用型戶外工作者與探險者適合<br /><br />- Lily  <br />  - 核心賣點 / 關鍵字：小巧時尚、女性健康追蹤、隱藏式螢幕設計  <br />  - 款式舉例：Lily 2、Lily 2 Active  <br />  - 一句話定位：送禮與女性日常佩戴首選<br /><br />- Epix  <br />  - 核心賣點 / 關鍵字：AMOLED 旗艦顯示、地圖與訓練分析、高畫質螢幕  <br />  - 款式舉例：Epix Pro Gen 2  <br />  - 一句話定位：想要 Fenix 功能但偏好鮮豔螢幕的用家<br /><br />- Approach  <br />  - 核心賣點 / 關鍵字：高爾夫球道圖、坡度補償、虛擬球童、揮桿分析  <br />  - 款式舉例：Approach S70、S42  <br />  - 一句話定位：高爾夫愛好者專用<br /><br />- Edge  <br />  - 核心賣點 / 關鍵字：自行車碼表、地圖導航、訓練數據、與 Varia/Rally 整合  <br />  - 款式舉例：Edge 540、840、1040、1050  <br />  - 一句話定位：單車訓練與導航專用<br /><br />---<br /><br />特殊專業運動系列（按需推薦）<br /><br />- Descent 潛水系列  <br />  - 核心賣點 / 關鍵字：潛水電腦、多氣體支援、潛水日誌、水面 GPS  <br />  - 款式舉例：Descent Mk3、Descent G1<br /><br />- Quatix 航海系列  <br />  - 核心賣點 / 關鍵字：航海導航、自動舵控制、潮汐與航點功能、釣魚支援  <br />  - 款式舉例：Quatix 7<br /><br />- D2 航空系列  <br />  - 核心賣點 / 關鍵字：飛行員功能、航空天氣、機場資訊、全球導航  <br />  - 款式舉例：D2 Mach 1<br /><br />- Tactix 戰術系列  <br />  - 核心賣點 / 關鍵字：戰術功能、夜視鏡相容、跳傘模式、軍規耐用  <br />  - 款式舉例：Tactix 7<br /><br />- Enduro 超長耐力系列  <br />  - 核心賣點 / 關鍵字：超長續航、太陽能、輕量化、越野跑支援  <br />  - 款式舉例：Enduro 3<br /><br />- Varia / Rally 自行車配件  <br />  - 核心賣點 / 關鍵字：雷達尾燈、功率踏板、提升安全與訓練數據整合  <br />  - 款式舉例：Varia RTL515、Rally RS200<br /><br />- Vivofit Jr. / Astro 兒童與寵物  <br />  - 核心賣點 / 關鍵字：兒童活動追蹤、寵物 GPS 追蹤  <br />  - 款式舉例：Vivofit Jr. 3、Astro 430<br /><br />---<br /><br />銷售黃金對答邏輯 框架<br /><br />開場必問三句（快速收集需求）<br />- 你平時主要做咩運動多：跑步、健身、行山、單車、高爾夫、游水等  <br />- 你希望隻錶主要幫你解決咩問題：訓練進步、健康監測、續航、通知或外觀等  <br />- 你之前有冇用過運動錶或 Garmin：升級需求或第一次購買<br /><br />需求對應與一句話話術（快速推薦）<br />- 跑步訓練 → 推薦 Forerunner（例如 265、965）  <br />  - 話術：有每日訓練建議、跑步動態與 PacePro，幫你科學化提升成績<br />- 日常佩戴且要靚螢幕 → 推薦 Venu（例如 Venu 3）  <br />  - 話術：AMOLED 螢幕靚、支援通話與音樂，Body Battery 幫你管理全天能量<br />- 行山露營或野外長時間使用 → 推薦 Fenix / Instinct  <br />  - 話術：軍規耐用、太陽能或超長續航、內建地圖與多頻 GPS，野外最安心<br />- 送禮或女性款 → 推薦 Lily 或 Venu 3S  <br />  - 話術：細巧設計與女性健康功能，外觀與實用兼備<br />- 高爾夫 → 推薦 Approach S70  <br />  - 話術：預載球道圖與虛擬球童，打波時直接看錶就知距離與建議桿數<br />- 單車訓練與安全 → 推薦 Edge + Varia  <br />  - 話術：碼表導航與訓練數據，配 Varia 雷達提升後方安全<br />- 預算有限但要功能 → 推薦 Vivoactive 或 入門 Forerunner  <br />  - 話術：性價比高，基本 GPS 與健康追蹤齊全<br /><br />常見異議處理（簡短有力）<br />- 太貴：拆算每日成本，強調「買的是教練、健康監測與耐用性」，使用年限長、總成本低  <br />- 功能太多用不到：提供客製化設定，只顯示常用功能，進階功能隨時可開啟  <br />- 手機已有 GPS/心跳：說明手錶提供 24 小時心率、專業運動模式與防水，佩戴更方便且數據更完整  <br />- 電池要常充：依系列說明續航差異，推薦太陽能或長續航款並示範省電模式  <br />- 唔知揀邊款：請顧客選一個最重要的需求（螢幕、續航、訓練或耐用），快速收窄選項<br /><br />成交技巧與話術模板（提高成交率）<br />- 上手體驗最關鍵：請顧客試戴並示範 1–2 個關鍵功能（心率、Body Battery、地圖）  <br />- 價值拆解：把價格拆成每日成本或使用年限，降低價格阻力  <br />- 強調生態系統：Garmin Connect 免費同步與教練功能，買錶只是開始  <br />- 主動加購：推薦快拆表帶、保護貼、充電線、單車配件提升客單價  <br />- 建立信心：提醒香港行貨保養與更新服務，說明退換與保固流程<br /><br />&gt; 重點備忘：先問運動類型，再問佩戴場景，最後問預算；讓顧客上手試戴是最有效的成交動作<br /><br />---<br /><br />祝在香港佳明工作順利，銷售順手如意。</p></div>
+      </article>
+      <script>
+(function() {
+  function safeGet(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_) {}
+  }
+
+  function initPersistence() {
+    const pageId = 'b2d93538-8e7d-406e-8b83-79a0f8875387';
+    const inputs = document.querySelectorAll('input[data-todo-storage-key]');
+    const detailsNodes = document.querySelectorAll('details[data-fold-storage-key]');
+    inputs.forEach((input) => {
+      const key = input.getAttribute('data-todo-storage-key');
+      if (!key || !key.startsWith('todo:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        input.checked = storedValue === '1';
+      }
+      input.addEventListener('change', () => {
+        safeSet(key, input.checked ? '1' : '0');
+      });
+    });
+
+    detailsNodes.forEach((details) => {
+      const key = details.getAttribute('data-fold-storage-key');
+      if (!key || !key.startsWith('fold:' + pageId + ':')) {
+        return;
+      }
+      const storedValue = safeGet(key);
+      if (storedValue !== null) {
+        details.open = storedValue === '1';
+      }
+      details.addEventListener('toggle', () => {
+        const persist = () => safeSet(key, details.open ? '1' : '0');
+        if (typeof window.requestAnimationFrame === 'function') {
+          window.requestAnimationFrame(persist);
+        } else {
+          persist();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPersistence, { once: true });
+  } else {
+    initPersistence();
+  }
+})();
+</script>
+
+    </main>
+  </body>
+</html>

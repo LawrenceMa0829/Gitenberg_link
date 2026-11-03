@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gitenberg OAuth Callback</title>
+  </head>
+  <body>
+    <p>Returning to Gitenberg...</p>
+    <script>
+      (function () {
+        const target = "gitenberg://oauth/callback";
+        const next = target + (window.location.search || "") + (window.location.hash || "");
+        window.location.replace(next);
+      })();
+    </script>
+  </body>
+</html>
